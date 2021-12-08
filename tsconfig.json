@@ -1,0 +1,22 @@
+{
+	"compilerOptions": {
+		"module": "CommonJS",
+		"target": "es2018",
+		"noImplicitAny": true,
+		"removeComments": true,
+		"preserveConstEnums": true,
+		"sourceMap": true,
+		"jsx": "react",
+		"baseUrl": ".",
+		"paths": {
+			"/*": ["*"]
+		},
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
+		"preserveSymlinks": true,
+	},
+	"files": [
+		"server.ts"
+	]
+}
