@@ -1,7 +1,10 @@
-export interface IUrlCardProps {
+export interface IUrlData {
 	id: string,
 	full_url: string,
 	short_url: string,
+}
+export interface IUrlCardProps {
+	urlData: IUrlData,
 }
 
 export interface IRemoveInviteeIconProps {
@@ -9,5 +12,9 @@ export interface IRemoveInviteeIconProps {
 }
 
 export interface IMainPageProps {
-	urls: IUrlCardProps[],
+	urls: IUrlData[],
+}
+
+export interface IErrorTypeProps {
+	errorType: string;
 }

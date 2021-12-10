@@ -1,6 +1,6 @@
 import React from 'react';
-import { IMainPageProps } from '../interfaces/urlInterface';
-import { UrlListHeader, UrlCard } from './components';
+import { IMainPageProps } from '../../interfaces/urlInterface';
+import { UrlListHeader, UrlCard } from '../components';
 
 import {
 	urlShortenerStyles,
@@ -11,8 +11,8 @@ import {
 	shortUrlInput,
 	inputLabel, 
 	submit,
-} from './stylesheet/url-shortener-styles';
-import { MAX_SHORT_URL_LENGTH } from '../helpers/helpres';
+} from '../stylesheet/url-shortener-styles';
+import { MAX_SHORT_URL_LENGTH } from '../../helpers/helpres';
 
 
 const MainPage = ({ urls }: IMainPageProps): JSX.Element => {

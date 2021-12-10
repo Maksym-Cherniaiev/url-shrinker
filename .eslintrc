@@ -1,0 +1,55 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "root": true,
+  "globals": {
+    "__meteor_bootstrap__": false,
+    "__meteor_runtime_config__": false,
+    "Assets": false,
+    "chrome": false,
+    "jscolor": false
+  },
+  "plugins": [
+    "react",
+    "react-hooks"
+  ],
+  "rules": {
+    "@typescript-eslint/strict-boolean-expressions": [
+      2,
+      {
+          "allowString" : false,
+          "allowNumber" : false
+      }
+    ],
+    "jsx-quotes": [
+      "error",
+      "prefer-single"
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [
+          ".js",
+          ".ts",
+          ".tsx"
+        ]
+      }
+    },
+    "react": {
+      "version": "detect"
+    }
+  },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"], 
+      "parserOptions": {
+        "project": ["./tsconfig.json"]
+      }
+    }
+  ],
+  "parser": "@typescript-eslint/parser"
+}

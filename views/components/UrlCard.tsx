@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React from 'react';
 import { IUrlCardProps } from '../../interfaces/urlInterface';
 
@@ -6,7 +5,7 @@ import { urlStyles } from '../stylesheet/url-shortener-styles';
 import { DeleteUrlIcon } from './DeleteUrlIcon';
 
 
-export const UrlCard = ({ urlData }: IUrlCardProps | any): JSX.Element => {
+export const UrlCard = ({ urlData }: IUrlCardProps): JSX.Element => {
 	const { id, full_url, short_url } = urlData;
 
 	return <div style={ urlStyles.url }>

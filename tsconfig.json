@@ -1,10 +1,13 @@
 {
+	"extends": "@tsconfig/node12",
 	"compilerOptions": {
 		"module": "CommonJS",
 		"target": "es2018",
+		"lib": ["esnext", "dom"],
 		"noImplicitAny": true,
 		"removeComments": true,
 		"preserveConstEnums": true,
+		"strictNullChecks": true,
 		"sourceMap": true,
 		"jsx": "react",
 		"baseUrl": ".",
@@ -18,5 +21,11 @@
 	},
 	"files": [
 		"server.ts"
-	]
+	],
+	"include": [
+        ".eslintrc",
+		"views/**/*",
+		"database/**/*",
+    ],
+	"exclude": ["node_modules"]
 }

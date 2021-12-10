@@ -1,7 +1,13 @@
-import { createShortUrlReplacer } from './createShortUrlReplacer';
-import { isValidUrl } from './isValidUrl';
+import { createShortUrl } from './createShortUrl';
+import { invalidUrl } from './invalidUrl';
+import { isUrlSecure } from './isUrlSecure';
+import { checkIfUrlExists } from './checkIfUrlExists';
+import { errorsCheck } from './errorsCheck';
 
 export {
-    createShortUrlReplacer,
-    isValidUrl,
+    createShortUrl,
+    invalidUrl,
+    isUrlSecure,
+    checkIfUrlExists,
+    errorsCheck,
 }

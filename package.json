@@ -4,13 +4,13 @@
 	"description": "Simple url shortener with PostgeSQL",
 	"main": "server.ts",
 	"scripts": {
-		"dev": "nodemon --ext '.ts,.tsx' server.ts"
+		"dev": "nodemon --ext '.ts,.tsx' server.ts",
+		"tslint": "eslint --ext .ts,.tsx ."
 	},
 	"author": "Like-ran",
 	"license": "ISC",
 	"dependencies": {
 		"@react-ssr/express": "^0.24.0",
-		"axios": "^0.24.0",
 		"express": "^4.17.1",
 		"express-react-views": "^0.11.0",
 		"express-tsx-views": "^1.4.6",
@@ -25,6 +25,11 @@
 		"@types/pg": "^8.6.1",
 		"@types/randomstring": "^1.1.8",
 		"@types/react": "^17.0.37",
+		"@typescript-eslint/eslint-plugin": "^5.6.0",
+		"@typescript-eslint/parser": "^5.6.0",
+		"eslint": "^8.4.1",
+		"eslint-plugin-react": "^7.27.1",
+		"eslint-plugin-react-hooks": "^4.3.0",
 		"nodemon": "^2.0.15",
 		"ts-node": "^10.4.0"
 	}

@@ -1,6 +1,4 @@
-import { Pool } from 'pg';
-import { connectParams } from './connect-params';
-
+import pool from './pool';
 import {
 	getAllDataFrom,
 	removeUrlData,
@@ -8,76 +6,40 @@ import {
 	getUrlByItsShortValue,
 } from '../interfaces/types';
 import { IUrlCardProps } from '../interfaces/urlInterface';
-import { createShortUrlReplacer } from '../helpers';
+import { createShortUrl } from '../helpers';
 
 
 export const getAllUrlDataFrom: getAllDataFrom = async () => {
-	const client = new Pool(connectParams);
-	client.connect();
+	const query = `SELECT * FROM urls`;
+	const { rows } = await pool.query(query);
+	const urlsList = rows.map((urlsData: IUrlCardProps) => urlsData);
 
-	try {
-		const query = `SELECT * FROM urls`;
-		const { rows } = await client.query(query);
-		const urlsList = rows.map((urlsData: IUrlCardProps) => urlsData);
-
-		client.end();
-
-		return urlsList;
-	} catch (err) {
-		return err.stack;
-	}
+	return urlsList;
 };
 
 export const removeUrl: removeUrlData = async (id) => {
-	const client = new Pool(connectParams);
-	client.connect();
+	const query = `DELETE FROM urls WHERE id = ${ id }`;
+	await pool.query(query);
 
-	try {
-		const query = `DELETE FROM urls WHERE id = ${ id }`;
-		await client.query(query);
-
-		client.end();
-
-		return;
-	} catch (err) {
-		return err.stack;
-	}
+	return;
 };
 
 export const shortenUrl: urlShortener = async (fullUrl, shortUrl) => {
-	const client = new Pool(connectParams);
-	client.connect();
+	const query = `
+		INSERT INTO urls (id,full_url,short_url)
+		VALUES (default,'${ fullUrl }','${ createShortUrl(shortUrl) }')
+	`;
 
-	try {
-		const query = `
-			INSERT INTO urls (id,full_url,short_url)
-			VALUES (default,'${ fullUrl }','${ createShortUrlReplacer(shortUrl) }')
-		`;
+	await pool.query(query);
 
-		await client.query(query);
-
-		client.end();
-
-		return;
-	} catch (err) {
-		return err.stack;
-	}
+	return;
 };
 
 export const getFullUrlByItsShortValue: getUrlByItsShortValue = async (shortUrl) => {
-	const client = new Pool(connectParams);
-	client.connect();
+	const query = `SELECT DISTINCT full_url FROM urls WHERE short_url = '${ shortUrl }' FETCH FIRST ROW ONLY`;
 
-	try {
-		const query = `SELECT DISTINCT full_url FROM urls WHERE short_url = '${ shortUrl }' FETCH FIRST ROW ONLY`;
+	const { rows } = await pool.query(query);
+	const { full_url } = rows[0];
 
-		const { rows } = await client.query(query);
-		const { full_url } = rows[0];
-
-		client.end();
-
-		return full_url;
-	} catch (err) {
-		return err.stack;
-	}
+	return full_url;
 };
